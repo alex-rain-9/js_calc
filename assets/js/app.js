@@ -116,6 +116,9 @@ calc = {
             if (modifiers.includes(value.charAt(0))) {
                 value = '0'.concat(value)
             }
+            if (modifiers.includes(value.charAt(value.length - 1))) {
+                value = value.concat('0')
+            }
             while (leftBracketCount !== 0) {
                 calc.addClBracket(')')
             }
