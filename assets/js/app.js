@@ -11,7 +11,6 @@ let lastNumbersCount = 0
 let scrolls = document.querySelectorAll('div.sc')
 scrolls.forEach( scroll => {
     scroll.addEventListener("wheel", (evt) => {
-        console.log(scroll.scrollWidth)
         evt.preventDefault()
         scroll.scrollLeft += evt.deltaY
     })
@@ -100,8 +99,6 @@ calc = {
         changeMark : () => {
             const modifierPos = value.length - lastNumbersCount - 1
             const valueArr = [value.slice(0, modifierPos), value.slice(lastNumbersCount * -1)]
-            console.log(modifierPos)
-            console.log(modifiers.slice(0, 3))
             if (value.charAt(modifierPos) === '+') {
                 value = [valueArr[0], '-', valueArr[1]].join('')
             } else if (value.charAt(modifierPos) === '-') {
@@ -128,10 +125,7 @@ calc = {
             const result = parseFloat(fixStr.toFixed(2)).toString()
             output.textContent = result
             value = result
-            console.log(value !== 0)
-            console.log(lastNumbersCount);
             lastNumbersCount = value.length
-            console.log(lastNumbersCount);
         }
 
     }
