@@ -14,7 +14,6 @@ scrolls.forEach( scroll => {
         evt.preventDefault()
         scroll.scrollLeft += evt.deltaY
     })
-
 })
 
 calc = {
@@ -110,11 +109,16 @@ calc = {
         },
 
         calculate: () => {
+            console.log(modifiers.slice(0,3))
+            console.log(modifiers.slice(3,6))
             if (modifiers.includes(value.charAt(0))) {
                 value = '0'.concat(value)
             }
-            if (modifiers.includes(value.charAt(value.length - 1))) {
+            if (modifiers.slice(3,6).includes(value.charAt(value.length - 1))) {
                 value = value.concat('0')
+            }
+            if (modifiers.slice(0,3).includes(value.charAt(value.length - 1))) {
+                value = value.concat('1')
             }
             while (leftBracketCount !== 0) {
                 calc.addClBracket(')')
@@ -127,7 +131,6 @@ calc = {
             value = result
             lastNumbersCount = value.length
         }
-
     }
 }
 
